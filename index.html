@@ -369,6 +369,14 @@
     font-size:17.5px; font-weight:900; letter-spacing:1.5px; color:#2A1B04;
     position:relative; z-index:1;
   }
+  button.watch-btn { width:calc(100% - 30px); font:inherit; cursor:pointer; -webkit-appearance:none; appearance:none; }
+
+  /* 動画の埋め込み再生 */
+  .video-embed { margin:-6px 15px 15px; border-radius:10px; overflow:hidden; background:#000; }
+  .video-embed.is-hidden { display:none; }
+  .video-embed .drive-frame-wrap { position:relative; width:100%; aspect-ratio:9/16; }
+  .video-embed .drive-frame-wrap iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .video-embed .insta-frame-wrap { display:flex; justify-content:center; padding:12px 0; background:#000; }
 
   .divider { display:flex; align-items:center; gap:12px; margin:0.6rem 1.3rem 0; }
   .divider .line { flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(201,162,75,0.5),transparent); }
@@ -476,9 +484,10 @@
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">誰もが知る「ChatGPT」で掴み、「すごい人だけ知っている」の限定感で"自分も知りたい"を刺激。</div>
           </div>
-          <a class="watch-btn" href="https://drive.google.com/drive/folders/1diyFkx4vaNTlq7mK1F4GVumBPeEZ20YF?usp=drive_link" target="_blank" rel="noopener">
-            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
-          </a>
+          <button type="button" class="watch-btn" onclick="toggleVideo(this,'embed-01','drive','1-4T0SkygFSZakzg2P5_K172jxzzO1gE5')">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして再生</span>
+          </button>
+          <div class="video-embed is-hidden" id="embed-01"></div>
         </div>
 
         <div class="card reveal" style="animation-delay:.34s">
@@ -490,9 +499,10 @@
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">みんなが知る定番を冒頭で「危険」と否定し、"知らなきゃヤバい"と引き込む。</div>
           </div>
-          <a class="watch-btn" href="https://drive.google.com/drive/folders/1I50u_lvOaFQKBrgSYBTZ6Xa96918Rowb?usp=sharing" target="_blank" rel="noopener">
-            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
-          </a>
+          <button type="button" class="watch-btn" onclick="toggleVideo(this,'embed-02','drive','1V3W7YPvKxo_eLbYkyYrrKij05mnXL2lP')">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして再生</span>
+          </button>
+          <div class="video-embed is-hidden" id="embed-02"></div>
         </div>
 
         <div class="card reveal" style="animation-delay:.40s">
@@ -504,9 +514,10 @@
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">認知度の高い「ChatGPT」を先頭に。有料ツールを無料ツールで上回り、優越感を演出。テンポ命。</div>
           </div>
-          <a class="watch-btn" href="https://drive.google.com/drive/folders/1GQi3g7VLbtQA7ImmSEFHA7Zvdx4TYj9U?usp=drive_link" target="_blank" rel="noopener">
-            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
-          </a>
+          <button type="button" class="watch-btn" onclick="toggleVideo(this,'embed-03','drive','15rnzCzOqp38m3Eexp78slcpGKHTFogsA')">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして再生</span>
+          </button>
+          <div class="video-embed is-hidden" id="embed-03"></div>
         </div>
 
         <div class="card reveal" style="animation-delay:.46s">
@@ -518,9 +529,10 @@
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">シュールな映像で、日常で"AIに奪ってほしい"と感じる作業を写し、共感で引き込む。</div>
           </div>
-          <a class="watch-btn" href="https://drive.google.com/drive/folders/1e9lUkzmvdSYxr-lBdgAlbOccLcb8TEKq?usp=sharing" target="_blank" rel="noopener">
-            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
-          </a>
+          <button type="button" class="watch-btn" onclick="toggleVideo(this,'embed-04','drive','156iTqztPzGXXA6vBCQjOJwOMNQNVC6sM')">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして再生</span>
+          </button>
+          <div class="video-embed is-hidden" id="embed-04"></div>
         </div>
 
         <div class="card reveal" style="animation-delay:.52s">
@@ -532,9 +544,10 @@
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">「海外で流行中」で最先端の希少性を打ち出し、あらゆる場面でMiniMeが活躍するという有益性をアピール。</div>
           </div>
-          <a class="watch-btn" href="https://drive.google.com/drive/folders/1eKxS_LJbhognFrUIGwybhTxf1H-0t5WL?usp=sharing" target="_blank" rel="noopener">
-            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
-          </a>
+          <button type="button" class="watch-btn" onclick="toggleVideo(this,'embed-05','drive','1kyaFPV3sxGr3zHiQqUuMNRN8fRO_6O4c')">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして再生</span>
+          </button>
+          <div class="video-embed is-hidden" id="embed-05"></div>
         </div>
 
         <div class="card reveal" style="animation-delay:.58s">
@@ -546,9 +559,10 @@
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">動画が難しい人は画像投稿から。構成は変えず、ランキングの内容などを入れ替えて作ってみる。</div>
           </div>
-          <a class="watch-btn" href="https://drive.google.com/drive/folders/1rzzGCS51so4SVBCMgnuqZwdTJv9e3EZd?usp=drive_link" target="_blank" rel="noopener">
-            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
-          </a>
+          <button type="button" class="watch-btn" onclick="toggleVideo(this,'embed-06','drive','1LUs7kSeFL9N3b6qBsGGwb1465MgRRj7W')">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして再生</span>
+          </button>
+          <div class="video-embed is-hidden" id="embed-06"></div>
         </div>
 
         <div class="card reveal" style="animation-delay:.64s">
@@ -560,9 +574,10 @@
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">2025 vs 2026のAIツール比較という切り口を真似する。丸パクリにならないよう一部ツールを入れ替える。</div>
           </div>
-          <a class="watch-btn" href="https://drive.google.com/file/d/16-cvnvFcucp1EASdoklM_6Yj8KwQL3DV/view?usp=sharing" target="_blank" rel="noopener">
-            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
-          </a>
+          <button type="button" class="watch-btn" onclick="toggleVideo(this,'embed-07','drive','16-cvnvFcucp1EASdoklM_6Yj8KwQL3DV')">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして再生</span>
+          </button>
+          <div class="video-embed is-hidden" id="embed-07"></div>
         </div>
       </div>
 
@@ -590,9 +605,10 @@
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">ClaudeCode×〇〇の掛け合わせで半自動化して収益化。AIに詳しくない視聴者の目線を下げて見せるのも重要。</div>
           </div>
-          <a class="watch-btn" href="https://www.instagram.com/reel/DaFMqd4RIWv/" target="_blank" rel="noopener">
-            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
-          </a>
+          <button type="button" class="watch-btn" onclick="toggleVideo(this,'embed-08','insta','https://www.instagram.com/reel/DaFMqd4RIWv/')">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして再生</span>
+          </button>
+          <div class="video-embed is-hidden" id="embed-08"></div>
         </div>
 
         <div class="card reveal" style="animation-delay:.66s">
@@ -604,9 +620,10 @@
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">ClaudeCode×noteの掛け合わせで半自動化して収益化するのが軸。動画の内容は変えず、言い回しで差をつける。</div>
           </div>
-          <a class="watch-btn" href="https://www.instagram.com/reel/DXbky96kShY/" target="_blank" rel="noopener">
-            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
-          </a>
+          <button type="button" class="watch-btn" onclick="toggleVideo(this,'embed-09','insta','https://www.instagram.com/reel/DXbky96kShY/')">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして再生</span>
+          </button>
+          <div class="video-embed is-hidden" id="embed-09"></div>
         </div>
 
         <div class="card reveal" style="animation-delay:.72s">
@@ -618,9 +635,10 @@
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">暗い中でのマシンガントーク、速いテンポと雰囲気で引き込む。ChatGPT×Googleマップという誰もが一度は聞いたツールを出す。</div>
           </div>
-          <a class="watch-btn" href="https://drive.google.com/drive/folders/1W3r9qwiS0lKpE739QQNBPcFuShwsltja?usp=drive_link" target="_blank" rel="noopener">
-            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
-          </a>
+          <button type="button" class="watch-btn" onclick="toggleVideo(this,'embed-10','drive','1p42UHtmHE4JV4QUJlSJhGPIkvWpo6C-j')">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして再生</span>
+          </button>
+          <div class="video-embed is-hidden" id="embed-10"></div>
         </div>
       </div>
 
@@ -673,6 +691,40 @@
       hs.appendChild(s);
     }
   }
+
+  // 動画のその場再生トグル
+  function toggleVideo(btn, containerId, type, ref) {
+    const box = document.getElementById(containerId);
+    const icon = btn.querySelector('.watch-icon');
+    const text = btn.querySelector('.watch-text');
+    const isOpen = box.classList.contains('is-open');
+
+    if (isOpen) {
+      box.classList.remove('is-open');
+      box.classList.add('is-hidden');
+      icon.textContent = '▶';
+      text.textContent = 'タップして再生';
+      return;
+    }
+
+    if (!box.dataset.loaded) {
+      if (type === 'drive') {
+        box.innerHTML = '<div class="drive-frame-wrap"><iframe src="https://drive.google.com/file/d/' + ref + '/preview" allow="autoplay" allowfullscreen loading="lazy"></iframe></div>';
+      } else if (type === 'insta') {
+        box.innerHTML = '<div class="insta-frame-wrap"><blockquote class="instagram-media" data-instgrm-permalink="' + ref + '" data-instgrm-version="14" style="margin:0;"></blockquote></div>';
+      }
+      box.dataset.loaded = '1';
+    }
+    if (type === 'insta' && window.instgrm) {
+      window.instgrm.Embeds.process();
+    }
+
+    box.classList.remove('is-hidden');
+    box.classList.add('is-open');
+    icon.textContent = '✕';
+    text.textContent = '閉じる';
+  }
 </script>
+<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
