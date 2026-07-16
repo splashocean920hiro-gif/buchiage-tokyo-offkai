@@ -282,17 +282,10 @@
     transition:transform .18s ease, border-color .25s ease, box-shadow .25s ease;
   }
   .card:hover { border-color:var(--gold); box-shadow:0 6px 24px rgba(201,162,75,0.25), 0 0 20px rgba(46,107,214,0.2); transform:translateY(-2px); }
-  .link-row {
+  .card-head {
     position:relative; display:flex; align-items:center; gap:13px;
-    text-decoration:none; padding:16px 15px; overflow:hidden;
+    padding:16px 15px 14px;
   }
-  .link-row::before {
-    content:""; position:absolute; top:0; left:-80%; width:60%; height:100%;
-    background:linear-gradient(90deg,transparent,rgba(240,208,128,0.2),transparent);
-    transform:skewX(-20deg); transition:left .6s ease;
-  }
-  .card:hover .link-row::before { left:150%; }
-  .link-row:active { transform:scale(0.985); }
 
   /* TTPポイント枠 */
   .ttp {
@@ -343,23 +336,39 @@
     background:linear-gradient(135deg,var(--gold-bright),var(--gold-soft));
     -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
   }
-  .link-text { flex:1; }
   .link-title {
+    flex:1;
     font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
     font-size:15.5px; color:var(--ivory); font-weight:800;
     letter-spacing:.5px; line-height:1.55;
     word-break:normal; overflow-wrap:break-word; line-break:strict;
   }
   .link-title .br-word { display:inline-block; }
-  .link-note { font-size:11px; color:var(--gold-soft); margin-top:3px; letter-spacing:1px; }
-  .play {
-    min-width:36px; height:36px; border-radius:50%;
-    background:linear-gradient(145deg,rgba(201,162,75,0.18),rgba(201,162,75,0.05));
-    border:1px solid rgba(201,162,75,0.5);
-    display:flex; align-items:center; justify-content:center;
-    font-size:14px; color:var(--gold-bright); flex-shrink:0; transition:all .25s ease;
+
+  /* 視聴ボタン */
+  .watch-btn {
+    position:relative; display:flex; align-items:center; justify-content:center; gap:8px;
+    text-decoration:none;
+    margin:0 15px 15px; padding:13px 16px; border-radius:10px;
+    background:linear-gradient(180deg,#FCEFBE,#EAC356 45%,#C99228);
+    border:1px solid rgba(255,240,200,0.7);
+    box-shadow:0 4px 16px rgba(201,162,75,0.45), inset 0 1px 0 rgba(255,255,255,0.55);
+    overflow:hidden;
+    transition:transform .18s ease, box-shadow .25s ease;
   }
-  .link-row:hover .play { background:linear-gradient(145deg,var(--gold-soft),var(--gold)); color:var(--navy-deep); box-shadow:0 0 18px rgba(240,208,128,0.6); }
+  .watch-btn::before {
+    content:""; position:absolute; top:0; left:-80%; width:55%; height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.5),transparent);
+    transform:skewX(-20deg); animation:btnshine 3.5s ease-in-out infinite;
+  }
+  .watch-btn:active { transform:scale(0.97); }
+  .watch-btn:hover { box-shadow:0 6px 20px rgba(201,162,75,0.6), inset 0 1px 0 rgba(255,255,255,0.6); }
+  .watch-btn .watch-icon { font-size:13px; color:#2A1B04; position:relative; z-index:1; }
+  .watch-btn .watch-text {
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+    font-size:14.5px; font-weight:900; letter-spacing:1.5px; color:#2A1B04;
+    position:relative; z-index:1;
+  }
 
   .divider { display:flex; align-items:center; gap:12px; margin:0.6rem 1.3rem 0; }
   .divider .line { flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(201,162,75,0.5),transparent); }
@@ -459,87 +468,101 @@
 
       <div class="links">
         <div class="card reveal" style="animation-delay:.28s">
-          <a class="link-row" href="https://drive.google.com/drive/folders/1diyFkx4vaNTlq7mK1F4GVumBPeEZ20YF?usp=drive_link" target="_blank" rel="noopener">
+          <div class="card-head">
             <div class="num"><span>01</span></div>
-            <div class="link-text"><div class="link-title"><span class="br-word">ChatGPT</span> <span class="br-word">シークレットコード</span> <span class="br-word">TOP5</span></div><div class="link-note">▶ タップして視聴</div></div>
-            <div class="play">▶</div>
-          </a>
+            <div class="link-title"><span class="br-word">ChatGPT</span> <span class="br-word">シークレットコード</span> <span class="br-word">TOP5</span></div>
+          </div>
           <div class="ttp">
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">誰もが知る「ChatGPT」で掴み、「すごい人だけ知っている」の限定感で"自分も知りたい"を刺激。</div>
           </div>
+          <a class="watch-btn" href="https://drive.google.com/drive/folders/1diyFkx4vaNTlq7mK1F4GVumBPeEZ20YF?usp=drive_link" target="_blank" rel="noopener">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
+          </a>
         </div>
 
         <div class="card reveal" style="animation-delay:.34s">
-          <a class="link-row" href="https://drive.google.com/drive/folders/1I50u_lvOaFQKBrgSYBTZ6Xa96918Rowb?usp=sharing" target="_blank" rel="noopener">
+          <div class="card-head">
             <div class="num"><span>02</span></div>
-            <div class="link-text"><div class="link-title"><span class="br-word">ChatGPT</span> <span class="br-word">知らないと危険な</span> <span class="br-word">3つの初期設定</span></div><div class="link-note">▶ タップして視聴</div></div>
-            <div class="play">▶</div>
-          </a>
+            <div class="link-title"><span class="br-word">ChatGPT</span> <span class="br-word">知らないと危険な</span> <span class="br-word">3つの初期設定</span></div>
+          </div>
           <div class="ttp">
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">みんなが知る定番を冒頭で「危険」と否定し、"知らなきゃヤバい"と引き込む。</div>
           </div>
+          <a class="watch-btn" href="https://drive.google.com/drive/folders/1I50u_lvOaFQKBrgSYBTZ6Xa96918Rowb?usp=sharing" target="_blank" rel="noopener">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
+          </a>
         </div>
 
         <div class="card reveal" style="animation-delay:.40s">
-          <a class="link-row" href="https://drive.google.com/drive/folders/1GQi3g7VLbtQA7ImmSEFHA7Zvdx4TYj9U?usp=drive_link" target="_blank" rel="noopener">
+          <div class="card-head">
             <div class="num"><span>03</span></div>
-            <div class="link-text"><div class="link-title"><span class="br-word">有料AI</span> vs <span class="br-word">無料AI</span></div><div class="link-note">▶ タップして視聴</div></div>
-            <div class="play">▶</div>
-          </a>
+            <div class="link-title"><span class="br-word">有料AI</span> vs <span class="br-word">無料AI</span></div>
+          </div>
           <div class="ttp">
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">認知度の高い「ChatGPT」を先頭に。有料ツールを無料ツールで上回り、優越感を演出。テンポ命。</div>
           </div>
+          <a class="watch-btn" href="https://drive.google.com/drive/folders/1GQi3g7VLbtQA7ImmSEFHA7Zvdx4TYj9U?usp=drive_link" target="_blank" rel="noopener">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
+          </a>
         </div>
 
         <div class="card reveal" style="animation-delay:.46s">
-          <a class="link-row" href="https://drive.google.com/drive/folders/1e9lUkzmvdSYxr-lBdgAlbOccLcb8TEKq?usp=sharing" target="_blank" rel="noopener">
+          <div class="card-head">
             <div class="num"><span>04</span></div>
-            <div class="link-text"><div class="link-title"><span class="br-word">AIに仕事を</span><span class="br-word">奪われる、らしい</span></div><div class="link-note">▶ タップして視聴</div></div>
-            <div class="play">▶</div>
-          </a>
+            <div class="link-title"><span class="br-word">AIに仕事を</span><span class="br-word">奪われる、らしい</span></div>
+          </div>
           <div class="ttp">
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">シュールな映像で、日常で"AIに奪ってほしい"と感じる作業を写し、共感で引き込む。</div>
           </div>
+          <a class="watch-btn" href="https://drive.google.com/drive/folders/1e9lUkzmvdSYxr-lBdgAlbOccLcb8TEKq?usp=sharing" target="_blank" rel="noopener">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
+          </a>
         </div>
 
         <div class="card reveal" style="animation-delay:.52s">
-          <a class="link-row" href="https://drive.google.com/drive/folders/1eKxS_LJbhognFrUIGwybhTxf1H-0t5WL?usp=sharing" target="_blank" rel="noopener">
+          <div class="card-head">
             <div class="num"><span>05</span></div>
-            <div class="link-text"><div class="link-title"><span class="br-word">海外で流行中！</span><span class="br-word">AI×自分専用</span><span class="br-word">MiniMeの作り方</span></div><div class="link-note">▶ タップして視聴</div></div>
-            <div class="play">▶</div>
-          </a>
+            <div class="link-title"><span class="br-word">海外で流行中！</span><span class="br-word">AI×自分専用</span><span class="br-word">MiniMeの作り方</span></div>
+          </div>
           <div class="ttp">
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">「海外で流行中」で最先端の希少性を打ち出し、あらゆる場面でMiniMeが活躍するという有益性をアピール。</div>
           </div>
+          <a class="watch-btn" href="https://drive.google.com/drive/folders/1eKxS_LJbhognFrUIGwybhTxf1H-0t5WL?usp=sharing" target="_blank" rel="noopener">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
+          </a>
         </div>
 
         <div class="card reveal" style="animation-delay:.58s">
-          <a class="link-row" href="https://drive.google.com/drive/folders/1rzzGCS51so4SVBCMgnuqZwdTJv9e3EZd?usp=drive_link" target="_blank" rel="noopener">
+          <div class="card-head">
             <div class="num"><span>06</span></div>
-            <div class="link-text"><div class="link-title">目的別AI厳選リスト（画像）</div><div class="link-note">▶ タップして視聴</div></div>
-            <div class="play">▶</div>
-          </a>
+            <div class="link-title">目的別AI厳選リスト（画像）</div>
+          </div>
           <div class="ttp">
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">動画が難しい人は画像投稿から。構成は変えず、ランキングの内容などを入れ替えて作ってみる。</div>
           </div>
+          <a class="watch-btn" href="https://drive.google.com/drive/folders/1rzzGCS51so4SVBCMgnuqZwdTJv9e3EZd?usp=drive_link" target="_blank" rel="noopener">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
+          </a>
         </div>
 
         <div class="card reveal" style="animation-delay:.64s">
-          <a class="link-row" href="https://drive.google.com/file/d/16-cvnvFcucp1EASdoklM_6Yj8KwQL3DV/view?usp=sharing" target="_blank" rel="noopener">
+          <div class="card-head">
             <div class="num"><span>07</span></div>
-            <div class="link-text"><div class="link-title"><span class="br-word">AI使うならこれ</span> <span class="br-word">2025 vs 2026</span><span class="br-word">（画像）</span></div><div class="link-note">▶ タップして視聴</div></div>
-            <div class="play">▶</div>
-          </a>
+            <div class="link-title"><span class="br-word">AI使うならこれ</span> <span class="br-word">2025 vs 2026</span><span class="br-word">（画像）</span></div>
+          </div>
           <div class="ttp">
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">2025 vs 2026のAIツール比較という切り口を真似する。丸パクリにならないよう一部ツールを入れ替える。</div>
           </div>
+          <a class="watch-btn" href="https://drive.google.com/file/d/16-cvnvFcucp1EASdoklM_6Yj8KwQL3DV/view?usp=sharing" target="_blank" rel="noopener">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
+          </a>
         </div>
       </div>
 
@@ -559,39 +582,45 @@
 
       <div class="links">
         <div class="card reveal" style="animation-delay:.6s">
-          <a class="link-row" href="https://www.instagram.com/reel/DaFMqd4RIWv/" target="_blank" rel="noopener">
+          <div class="card-head">
             <div class="num"><span>08</span></div>
-            <div class="link-text"><div class="link-title">ClaudeCode × YouTube</div><div class="link-note">▶ タップして視聴</div></div>
-            <div class="play">▶</div>
-          </a>
+            <div class="link-title">ClaudeCode × YouTube</div>
+          </div>
           <div class="ttp">
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">ClaudeCode×〇〇の掛け合わせで半自動化して収益化。AIに詳しくない視聴者の目線を下げて見せるのも重要。</div>
           </div>
+          <a class="watch-btn" href="https://www.instagram.com/reel/DaFMqd4RIWv/" target="_blank" rel="noopener">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
+          </a>
         </div>
 
         <div class="card reveal" style="animation-delay:.66s">
-          <a class="link-row" href="https://www.instagram.com/reel/DXbky96kShY/" target="_blank" rel="noopener">
+          <div class="card-head">
             <div class="num"><span>09</span></div>
-            <div class="link-text"><div class="link-title">ClaudeCode × note</div><div class="link-note">▶ タップして視聴</div></div>
-            <div class="play">▶</div>
-          </a>
+            <div class="link-title">ClaudeCode × note</div>
+          </div>
           <div class="ttp">
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">ClaudeCode×noteの掛け合わせで半自動化して収益化するのが軸。動画の内容は変えず、言い回しで差をつける。</div>
           </div>
+          <a class="watch-btn" href="https://www.instagram.com/reel/DXbky96kShY/" target="_blank" rel="noopener">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
+          </a>
         </div>
 
         <div class="card reveal" style="animation-delay:.72s">
-          <a class="link-row" href="https://drive.google.com/drive/folders/1W3r9qwiS0lKpE739QQNBPcFuShwsltja?usp=drive_link" target="_blank" rel="noopener">
+          <div class="card-head">
             <div class="num"><span>10</span></div>
-            <div class="link-text"><div class="link-title"><span class="br-word">ChatGPT ×</span> <span class="br-word">Googleマップ</span></div><div class="link-note">▶ タップして視聴</div></div>
-            <div class="play">▶</div>
-          </a>
+            <div class="link-title"><span class="br-word">ChatGPT ×</span> <span class="br-word">Googleマップ</span></div>
+          </div>
           <div class="ttp">
             <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
             <div class="ttp-body">暗い中でのマシンガントーク、速いテンポと雰囲気で引き込む。ChatGPT×Googleマップという誰もが一度は聞いたツールを出す。</div>
           </div>
+          <a class="watch-btn" href="https://drive.google.com/drive/folders/1W3r9qwiS0lKpE739QQNBPcFuShwsltja?usp=drive_link" target="_blank" rel="noopener">
+            <span class="watch-icon">▶</span><span class="watch-text">タップして視聴</span>
+          </a>
         </div>
       </div>
 
