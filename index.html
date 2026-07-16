@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>ぶち上げ東京オフ会｜参加者限定特典</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  /* --- 上の余白を消す4点セット --- */
+  html,body{ margin:0!important; padding-top:0!important; }
+  html{ padding-top:0!important; }
+  .frame{ overflow:hidden; }
+  .content > :first-child{ margin-top:0!important; }
+  .hero > :first-child, .hero-inner > :first-child{ margin-top:0!important; }
+  .hero-inner{ padding-top:0!important; }
+  .hero{ padding-top:16px!important; }
+  /* 日本語の改行を句読点・単語の切れ目のみに */
+  body, p, div, span, a {
+    word-break:normal;
+    overflow-wrap:break-word;
+    line-break:strict;
+  }
+  :root {
+    --navy-deep:#050B22;
+    --navy:#0A1840;
+    --navy-line:#2A3E78;
+    --gold:#C9A24B;
+    --gold-bright:#F5D888;
+    --gold-soft:#E8C877;
+    --gold-deep:#9C7524;
+    --ivory:#F5F0E4;
+    --blue-muted:#A9BCE8;
+    --blue-dim:#7C8FC0;
+    --stage-blue:#2E6BD6;
+    --stage-cyan:#4FA8FF;
+  }
+  html,body { background:#030818; }
+  body {
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+    color:var(--ivory);
+    -webkit-font-smoothing:antialiased;
+    padding:0 0 46px;
+    margin:0;
+    line-height:1.4;
+    overflow-x:hidden;
+  }
+  .serif { font-family:"Hiragino Mincho ProN","Yu Mincho","YuMincho",serif; }
+  .wrap { max-width:410px; margin:0 auto; padding:0 15px; position:relative; }
+  .frame > .content > .hero:first-child { padding-top:14px; }
+
+  /* ===== 会場のライトビーム（背景全体） ===== */
+  .venue { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0; border-radius:24px; }
+  .beam {
+    position:absolute; top:-10%; transform-origin:top center;
+    width:60px; height:130%;
+    background:linear-gradient(to bottom, rgba(79,168,255,0.5), rgba(79,168,255,0.08) 55%, transparent 80%);
+    filter:blur(8px); mix-blend-mode:screen;
+    animation:sweep 7s ease-in-out infinite;
+  }
+  .beam.b1 { left:8%; transform:rotate(14deg); animation-delay:0s; }
+  .beam.b2 { left:32%; transform:rotate(-9deg); background:linear-gradient(to bottom, rgba(240,208,128,0.3), rgba(240,208,128,0.05) 55%, transparent 80%); animation-delay:1.6s; }
+  .beam.b3 { right:30%; transform:rotate(10deg); animation-delay:3s; }
+  .beam.b4 { right:6%; transform:rotate(-13deg); background:linear-gradient(to bottom, rgba(240,208,128,0.28), rgba(240,208,128,0.04) 55%, transparent 80%); animation-delay:4.4s; }
+  @keyframes sweep {
+    0%,100% { opacity:.5; transform:rotate(var(--r,12deg)) translateX(0); }
+    50% { opacity:1; }
+  }
+  .b1{--r:14deg;} .b2{--r:-9deg;} .b3{--r:10deg;} .b4{--r:-13deg;}
+
+  /* ネオン三角 */
+  .neon-tri {
+    position:absolute; width:0; height:0; opacity:.5; mix-blend-mode:screen;
+    animation:neonpulse 3.5s ease-in-out infinite;
+  }
+  @keyframes neonpulse { 0%,100%{opacity:.25;} 50%{opacity:.7;} }
+
+  /* 控えめな金粉 */
+  .confetti { position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:4; border-radius:24px; }
+  .cf {
+    position:absolute; top:-16px; opacity:0;
+    animation:fall linear infinite;
+  }
+  @keyframes fall {
+    0% { transform:translateY(-16px) rotateZ(0deg); opacity:0; }
+    12% { opacity:.7; }
+    85% { opacity:.5; }
+    100% { transform:translateY(1500px) rotateZ(540deg); opacity:0; }
+  }
+
+  @keyframes twinkle { 0%,100%{opacity:.15; transform:scale(.8);} 50%{opacity:1; transform:scale(1.3);} }
+
+  .frame {
+    position:relative; z-index:1;
+    background:
+      radial-gradient(ellipse 90% 40% at 50% 2%, rgba(79,168,255,0.45), transparent 58%),
+      radial-gradient(ellipse 110% 50% at 50% 0%, rgba(46,107,214,0.35), transparent 64%),
+      radial-gradient(ellipse 120% 55% at 50% 100%, rgba(46,107,214,0.28), transparent 62%),
+      radial-gradient(ellipse 70% 35% at 50% 45%, rgba(201,162,75,0.14), transparent 60%),
+      linear-gradient(170deg,#0E2258 0%,#0A1840 50%,#0E2258 100%);
+    border-radius:24px;
+    overflow:hidden;
+    border:1px solid var(--navy-line);
+    box-shadow:0 18px 60px rgba(0,0,0,0.8), 0 0 55px rgba(64,140,255,0.3), 0 0 0 1px rgba(201,162,75,0.15);
+  }
+  .frame::before, .frame::after {
+    content:""; position:absolute; left:0; right:0; height:2px; z-index:6;
+    background:linear-gradient(90deg,transparent,var(--gold),var(--gold-bright),var(--gold),transparent);
+  }
+  .frame::before { top:0; }
+  .frame::after { bottom:0; }
+
+  .content { position:relative; z-index:3; padding-top:0; margin-top:0; }
+
+  .reveal { opacity:0; transform:translateY(24px); animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes rise { to { opacity:1; transform:translateY(0); } }
+
+  /* ===== ヒーロー ===== */
+  .hero {
+    position:relative;
+    padding:18px 1.5rem 2rem;
+    text-align:center;
+    border-bottom:1px solid rgba(201,162,75,0.35);
+    overflow:hidden;
+    display:block;
+    min-height:0;
+    height:auto;
+  }
+  .hero-stage {
+    position:absolute; inset:0; z-index:0;
+    background:
+      radial-gradient(ellipse 75% 45% at 50% 2%, rgba(79,168,255,0.6), transparent 60%),
+      radial-gradient(ellipse 100% 55% at 50% 0%, rgba(46,107,214,0.45), transparent 66%),
+      radial-gradient(ellipse 90% 50% at 50% 0%, rgba(245,216,136,0.2), transparent 64%);
+  }
+  .hero-glow {
+    position:absolute; top:-60px; left:50%; transform:translateX(-50%);
+    width:240px; height:240px; border-radius:50%;
+    background:radial-gradient(circle, rgba(240,208,128,0.3), transparent 65%);
+    filter:blur(14px); animation:pulse 4s ease-in-out infinite; z-index:0;
+  }
+  @keyframes pulse { 0%,100%{opacity:.5; transform:translateX(-50%) scale(1);} 50%{opacity:1; transform:translateX(-50%) scale(1.12);} }
+  .hero > * { position:relative; z-index:1; }
+  .hero-stage, .hero-glow, .hero-sparks {
+    position:absolute!important;
+  }
+  .hero-inner { position:relative; z-index:2; }
+  /* 弾ける光の粒 */
+  .hero-sparks { position:absolute; inset:0; z-index:1; pointer-events:none; }
+  .spark {
+    position:absolute; color:#FFF7DC; opacity:0;
+    filter:drop-shadow(0 0 6px rgba(240,208,128,0.9));
+    animation:sparkPop 2.6s ease-in-out infinite;
+  }
+  @keyframes sparkPop {
+    0%,100% { opacity:0; transform:scale(0.3) rotate(0deg); }
+    50% { opacity:1; transform:scale(1) rotate(45deg); }
+  }
+
+  .badge {
+    display:inline-block;
+    font-size:12px; letter-spacing:4px; font-weight:800;
+    color:#3A2606;
+    background:linear-gradient(180deg,#FFF3C8,#F0C048 55%,#C98B22);
+    border-radius:22px; padding:8px 22px;
+    margin-bottom:1.4rem;
+    border:1px solid rgba(255,240,200,0.6);
+    box-shadow:0 4px 18px rgba(201,162,75,0.55), inset 0 1px 0 rgba(255,255,255,0.5);
+  }
+  .badge-star { animation:twinkle 2s ease-in-out infinite; display:inline-block; }
+  .hero-sub { font-size:13px; color:var(--gold-soft); letter-spacing:3px; margin-bottom:12px; font-weight:500; }
+  .hero-sub::before, .hero-sub::after { content:"◆"; font-size:8px; color:var(--gold); margin:0 10px; vertical-align:middle; opacity:.8; }
+  .crown { font-size:22px; margin-bottom:6px; display:block; animation:twinkle 3s ease-in-out infinite; }
+
+  .hero h1 {
+    font-size:30px; line-height:1.5; font-weight:700; color:var(--ivory);
+    margin-bottom:6px; text-shadow:0 2px 14px rgba(0,0,0,0.6);
+  }
+  /* ===== 冒頭 文字ドーン（枠なし） ===== */
+  .hero-headline { display:block; margin:2px 0 6px; text-align:center; }
+  .hl-sub {
+    display:block;
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+    font-size:14px; font-weight:800; letter-spacing:2px; color:#F7E9C4;
+    margin-bottom:12px;
+    text-shadow:0 2px 5px rgba(0,0,0,0.7), 0 0 12px rgba(245,216,136,0.4);
+  }
+  .hl-badge {
+    display:inline-block;
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+    font-size:13px; font-weight:800; letter-spacing:3px; color:#2A1B04;
+    background:linear-gradient(180deg,#FFF3C8,#F5CE5E 50%,#D89A2C);
+    padding:3px 16px; border-radius:4px; margin-bottom:12px;
+    box-shadow:0 2px 10px rgba(245,216,136,0.5), inset 0 1px 0 rgba(255,255,255,0.6);
+  }
+  .hl-lead {
+    display:block;
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+    font-size:19px; font-weight:800; letter-spacing:1px; color:#FBEFD0;
+    margin-bottom:8px;
+    text-shadow:0 2px 6px rgba(0,0,0,0.7), 0 0 14px rgba(245,216,136,0.35);
+  }
+  .hl-strong {
+    display:block; white-space:nowrap; margin:6px auto 2px; text-align:center;
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+    font-size:clamp(28px, 8.4vw, 38px); font-weight:900; letter-spacing:-1px; line-height:1.1;
+    background:linear-gradient(180deg,#FFF9D8 0%,#FDE88A 40%,#F6C63C 70%,#E8AE28 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    text-shadow:
+      0 1px 0 #C69220, 1px 1px 0 #A6791A, 2px 2px 2px rgba(90,60,10,0.4),
+      0 0 16px rgba(255,225,120,0.4);
+  }
+  .hl-strong .q { font-size:0.78em; vertical-align:2px; }
+  .hl-hero {
+    position:relative;
+    display:block; margin:0 auto 4px; line-height:1.06; text-align:center; white-space:nowrap;
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+    font-size:clamp(38px, 11.4vw, 54px); font-weight:900; letter-spacing:-2px;
+    background:linear-gradient(180deg,#FFFDEA 0%,#FDEE9C 38%,#F8CE48 68%,#ECB42C 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent; color:transparent;
+    text-shadow:
+      0 1px 0 #C69220, 1px 1px 0 #A6791A, 2px 2px 0 #8A6414, 3px 3px 1px #6E5010,
+      3px 4px 4px rgba(80,55,10,0.5), 0 0 24px rgba(255,225,120,0.55);
+  }
+  .hl-hero .num10 {
+    font-size:1.32em; vertical-align:-0.1em;
+    background:linear-gradient(180deg,#FFFFF4 0%,#FEF2A8 38%,#FBD84E 66%,#F0BC30 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .hl-hero-wrap {
+    position:relative; display:block;
+  }
+  .hl-hero-wrap::before {
+    content:""; position:absolute; top:50%; left:50%;
+    width:120%; height:180%; transform:translate(-50%,-50%);
+    background:radial-gradient(ellipse at center, rgba(255,215,90,0.35), rgba(255,200,60,0.12) 45%, transparent 70%);
+    pointer-events:none; z-index:0;
+    animation:auraBreath 3.5s ease-in-out infinite;
+  }
+  @keyframes auraBreath { 0%,100%{opacity:.65; transform:translate(-50%,-50%) scale(1);} 50%{opacity:1; transform:translate(-50%,-50%) scale(1.08);} }
+  .hl-hero { position:relative; z-index:1; }
+  /* ===== 受賞バッジ風エンブレム（現状未使用・将来の拡張用に温存） ===== */
+  /* ===== セクション ===== */
+  .section-head { display:flex; align-items:center; gap:13px; padding:1.9rem 1.3rem 1.2rem; }
+  .section-icon {
+    width:42px; height:42px; border-radius:12px;
+    background:linear-gradient(145deg,#1A3272,#0E1E4C);
+    border:1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-size:20px; flex-shrink:0;
+    box-shadow:0 4px 14px rgba(0,0,0,0.4), 0 0 16px rgba(46,107,214,0.25), inset 0 1px 0 rgba(240,208,128,0.2);
+  }
+  .section-meta { flex:1; }
+  .section-eyebrow {
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+    font-size:9px; letter-spacing:3px; color:var(--gold-soft); margin-bottom:2px;
+  }
+  .section-title {
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+    font-size:23px; font-weight:900; letter-spacing:2px;
+    background:linear-gradient(180deg,#FFFBE8,#FCE9A0 45%,#E0A838 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    -webkit-text-stroke:0.5px rgba(90,55,10,0.4);
+    filter:drop-shadow(0 2px 2px rgba(0,0,0,0.5)) drop-shadow(0 0 12px rgba(240,208,128,0.5));
+  }
+  .section-desc { font-size:11px; color:var(--blue-dim); margin-top:3px; letter-spacing:1px; }
+  .section-count {
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+    font-size:11px; color:var(--gold-soft); font-weight:700;
+    border:1px solid rgba(201,162,75,0.5); border-radius:4px; padding:5px 11px; letter-spacing:2px;
+    background:rgba(201,162,75,0.08);
+  }
+
+  /* ===== カード ===== */
+  .links { padding:0 1.3rem; }
+  .card {
+    position:relative;
+    background:linear-gradient(135deg,#12275E 0%,#0C1B44 100%);
+    border:1px solid var(--navy-line); border-radius:14px;
+    margin-bottom:12px; overflow:hidden;
+    transition:transform .18s ease, border-color .25s ease, box-shadow .25s ease;
+  }
+  .card:hover { border-color:var(--gold); box-shadow:0 6px 24px rgba(201,162,75,0.25), 0 0 20px rgba(46,107,214,0.2); transform:translateY(-2px); }
+  .link-row {
+    position:relative; display:flex; align-items:center; gap:13px;
+    text-decoration:none; padding:16px 15px; overflow:hidden;
+  }
+  .link-row::before {
+    content:""; position:absolute; top:0; left:-80%; width:60%; height:100%;
+    background:linear-gradient(90deg,transparent,rgba(240,208,128,0.2),transparent);
+    transform:skewX(-20deg); transition:left .6s ease;
+  }
+  .card:hover .link-row::before { left:150%; }
+  .link-row:active { transform:scale(0.985); }
+
+  /* TTPポイント枠 */
+  .ttp {
+    position:relative;
+    margin:0 15px 15px; padding:13px 14px 13px 15px;
+    background:linear-gradient(135deg,rgba(201,162,75,0.14),rgba(201,162,75,0.05));
+    border:1.5px solid rgba(201,162,75,0.55);
+    border-radius:8px;
+    box-shadow:inset 0 0 18px rgba(201,162,75,0.08), 0 2px 10px rgba(0,0,0,0.35);
+  }
+  .ttp::before {
+    content:""; position:absolute; left:0; top:0; bottom:0; width:3px;
+    background:linear-gradient(180deg,#F5D888,#C9A24B,#9C7524);
+    border-radius:3px 0 0 3px;
+  }
+  .ttp-head {
+    display:flex; align-items:center; gap:7px;
+    font-size:12px; font-weight:800; letter-spacing:1px;
+    color:var(--gold-bright); margin-bottom:7px;
+  }
+  .ttp-head .check {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:18px; height:18px; border-radius:4px;
+    background:linear-gradient(145deg,#F5D888,#C9A24B);
+    color:#2A1B04; font-size:11px; font-weight:900;
+    box-shadow:0 1px 3px rgba(0,0,0,0.4);
+  }
+  .ttp-head .tag {
+    font-size:10px; font-weight:800; color:#2A1B04;
+    background:linear-gradient(135deg,var(--gold-soft),var(--gold-bright));
+    border-radius:4px; padding:2px 8px; letter-spacing:1px;
+  }
+  .ttp-body {
+    font-size:13px; line-height:1.9; color:#E6EDFA;
+    word-break:normal; overflow-wrap:break-word; line-break:strict;
+    text-align:left;
+  }
+  .ttp-body .ph { color:var(--blue-dim); font-style:italic; }
+  .num {
+    min-width:40px; height:40px; border-radius:11px;
+    background:linear-gradient(145deg,#0C1B44,#050E28);
+    border:1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-size:15px; font-weight:700; flex-shrink:0;
+    box-shadow:inset 0 1px 0 rgba(240,208,128,0.25);
+  }
+  .num span {
+    background:linear-gradient(135deg,var(--gold-bright),var(--gold-soft));
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+  }
+  .link-text { flex:1; }
+  .link-title {
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+    font-size:15.5px; color:var(--ivory); font-weight:800;
+    letter-spacing:.5px; line-height:1.55;
+    word-break:normal; overflow-wrap:break-word; line-break:strict;
+  }
+  .link-title .br-word { display:inline-block; }
+  .link-note { font-size:11px; color:var(--gold-soft); margin-top:3px; letter-spacing:1px; }
+  .play {
+    min-width:36px; height:36px; border-radius:50%;
+    background:linear-gradient(145deg,rgba(201,162,75,0.18),rgba(201,162,75,0.05));
+    border:1px solid rgba(201,162,75,0.5);
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; color:var(--gold-bright); flex-shrink:0; transition:all .25s ease;
+  }
+  .link-row:hover .play { background:linear-gradient(145deg,var(--gold-soft),var(--gold)); color:var(--navy-deep); box-shadow:0 0 18px rgba(240,208,128,0.6); }
+
+  .divider { display:flex; align-items:center; gap:12px; margin:0.6rem 1.3rem 0; }
+  .divider .line { flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(201,162,75,0.5),transparent); }
+  .divider .dot { color:var(--gold); font-size:9px; }
+
+  /* ===== フッター ===== */
+  .footer {
+    position:relative; padding:2.2rem 1.5rem 2rem; text-align:center;
+    background:radial-gradient(ellipse 90% 100% at 50% 100%, rgba(46,107,214,0.22), transparent 65%), radial-gradient(ellipse 70% 80% at 50% 100%, rgba(201,162,75,0.15), transparent 70%);
+    border-top:1px solid rgba(201,162,75,0.35); margin-top:0.8rem;
+  }
+  .footer-crown { font-size:24px; display:block; margin-bottom:12px; animation:twinkle 3s ease-in-out infinite; }
+  /* NEXT ACTION */
+  .next-action { margin-bottom:1.7rem; }
+  .na-eyebrow {
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+    font-size:10px; letter-spacing:5px; color:var(--gold-soft); margin-bottom:13px;
+  }
+  .na-eyebrow::before, .na-eyebrow::after {
+    content:""; display:inline-block; width:20px; height:1px; background:var(--gold);
+    vertical-align:middle; margin:0 9px;
+  }
+  .script-btn {
+    position:relative; display:flex; align-items:center; justify-content:center; gap:10px;
+    text-decoration:none;
+    padding:16px 20px; border-radius:12px;
+    background:linear-gradient(180deg,#FCEFBE,#EAC356 45%,#C99228);
+    border:1px solid rgba(255,240,200,0.7);
+    box-shadow:0 6px 22px rgba(201,162,75,0.5), 0 0 30px rgba(245,216,136,0.25), inset 0 1px 0 rgba(255,255,255,0.6);
+    overflow:hidden;
+    transition:transform .18s ease, box-shadow .25s ease;
+  }
+  .script-btn::before {
+    content:""; position:absolute; top:0; left:-80%; width:55%; height:100%;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,0.55),transparent);
+    transform:skewX(-20deg); animation:btnshine 3.5s ease-in-out infinite;
+  }
+  @keyframes btnshine { 0%,55%{left:-80%;} 100%{left:150%;} }
+  .script-btn:active { transform:scale(0.97); }
+  .script-btn:hover { box-shadow:0 8px 28px rgba(201,162,75,0.65), 0 0 40px rgba(245,216,136,0.4), inset 0 1px 0 rgba(255,255,255,0.6); }
+  .script-btn .btn-icon { font-size:20px; position:relative; z-index:1; }
+  .script-btn .btn-text {
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+    font-size:17px; font-weight:900; letter-spacing:1px; color:#2A1B04;
+    position:relative; z-index:1;
+  }
+  .na-note { font-size:11px; color:var(--blue-dim); margin-top:11px; letter-spacing:1px; }
+  .footer-brand {
+    font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+    font-size:21px; letter-spacing:3px; margin-top:16px; font-weight:900;
+    background:linear-gradient(180deg,#FFFBE8,#FCE9A0 45%,#E0A838 100%);
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    -webkit-text-stroke:0.5px rgba(90,55,10,0.35);
+    filter:drop-shadow(0 2px 2px rgba(0,0,0,0.5)) drop-shadow(0 0 14px rgba(240,208,128,0.55));
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="venue" id="venue">
+    <div class="beam b1"></div>
+    <div class="beam b2"></div>
+    <div class="beam b3"></div>
+    <div class="beam b4"></div>
+  </div>
+
+  <div class="frame">
+    <div class="content">
+
+      <div class="hero" style="padding:0 1.5rem 2rem;">
+        <div class="hero-stage"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-sparks" id="heroSparks"></div>
+        <div class="hero-inner">
+        <div class="badge"><span class="badge-star">✦</span> OFFKAI LIMITED</div>
+
+        <div class="hero-headline">
+          <span class="hl-sub">ぶち上げ東京オフ会 限定特典</span>
+          <span class="hl-badge">最新版</span>
+          <span class="hl-lead">講師陣が本気で選んだ</span>
+          <span class="hl-strong"><span class="q">「</span>まずTTPしたい<span class="q">」</span></span>
+          <span class="hl-hero-wrap"><span class="hl-hero">神動画<span class="num10">10</span>選</span></span>
+        </div>
+        </div>
+      </div>
+
+      <div class="section-head reveal" style="animation-delay:.2s">
+        <div class="section-icon">✨</div>
+        <div class="section-meta">
+          <div class="section-eyebrow">AI ACTIVATION</div>
+          <div class="section-title">AI活用</div>
+          <div class="section-desc">仕事も日常も効率化</div>
+        </div>
+        <div class="section-count">7本</div>
+      </div>
+
+      <div class="links">
+        <div class="card reveal" style="animation-delay:.28s">
+          <a class="link-row" href="https://drive.google.com/drive/folders/1diyFkx4vaNTlq7mK1F4GVumBPeEZ20YF?usp=drive_link" target="_blank" rel="noopener">
+            <div class="num"><span>01</span></div>
+            <div class="link-text"><div class="link-title"><span class="br-word">ChatGPT</span> <span class="br-word">シークレットコード</span> <span class="br-word">TOP5</span></div><div class="link-note">▶ タップして視聴</div></div>
+            <div class="play">▶</div>
+          </a>
+          <div class="ttp">
+            <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
+            <div class="ttp-body">誰もが知る「ChatGPT」で掴み、「すごい人だけ知っている」の限定感で"自分も知りたい"を刺激。</div>
+          </div>
+        </div>
+
+        <div class="card reveal" style="animation-delay:.34s">
+          <a class="link-row" href="https://drive.google.com/drive/folders/1I50u_lvOaFQKBrgSYBTZ6Xa96918Rowb?usp=sharing" target="_blank" rel="noopener">
+            <div class="num"><span>02</span></div>
+            <div class="link-text"><div class="link-title"><span class="br-word">ChatGPT</span> <span class="br-word">知らないと危険な</span> <span class="br-word">3つの初期設定</span></div><div class="link-note">▶ タップして視聴</div></div>
+            <div class="play">▶</div>
+          </a>
+          <div class="ttp">
+            <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
+            <div class="ttp-body">みんなが知る定番を冒頭で「危険」と否定し、"知らなきゃヤバい"と引き込む。</div>
+          </div>
+        </div>
+
+        <div class="card reveal" style="animation-delay:.40s">
+          <a class="link-row" href="https://drive.google.com/drive/folders/1GQi3g7VLbtQA7ImmSEFHA7Zvdx4TYj9U?usp=drive_link" target="_blank" rel="noopener">
+            <div class="num"><span>03</span></div>
+            <div class="link-text"><div class="link-title"><span class="br-word">有料AI</span> vs <span class="br-word">無料AI</span></div><div class="link-note">▶ タップして視聴</div></div>
+            <div class="play">▶</div>
+          </a>
+          <div class="ttp">
+            <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
+            <div class="ttp-body">認知度の高い「ChatGPT」を先頭に。有料ツールを無料ツールで上回り、優越感を演出。テンポ命。</div>
+          </div>
+        </div>
+
+        <div class="card reveal" style="animation-delay:.46s">
+          <a class="link-row" href="https://drive.google.com/drive/folders/1e9lUkzmvdSYxr-lBdgAlbOccLcb8TEKq?usp=sharing" target="_blank" rel="noopener">
+            <div class="num"><span>04</span></div>
+            <div class="link-text"><div class="link-title"><span class="br-word">AIに仕事を</span><span class="br-word">奪われる、らしい</span></div><div class="link-note">▶ タップして視聴</div></div>
+            <div class="play">▶</div>
+          </a>
+          <div class="ttp">
+            <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
+            <div class="ttp-body">シュールな映像で、日常で"AIに奪ってほしい"と感じる作業を写し、共感で引き込む。</div>
+          </div>
+        </div>
+
+        <div class="card reveal" style="animation-delay:.52s">
+          <a class="link-row" href="https://drive.google.com/drive/folders/1eKxS_LJbhognFrUIGwybhTxf1H-0t5WL?usp=sharing" target="_blank" rel="noopener">
+            <div class="num"><span>05</span></div>
+            <div class="link-text"><div class="link-title"><span class="br-word">海外で流行中！</span><span class="br-word">AI×自分専用</span><span class="br-word">MiniMeの作り方</span></div><div class="link-note">▶ タップして視聴</div></div>
+            <div class="play">▶</div>
+          </a>
+          <div class="ttp">
+            <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
+            <div class="ttp-body">「海外で流行中」で最先端の希少性を打ち出し、あらゆる場面でMiniMeが活躍するという有益性をアピール。</div>
+          </div>
+        </div>
+
+        <div class="card reveal" style="animation-delay:.58s">
+          <a class="link-row" href="https://drive.google.com/drive/folders/1rzzGCS51so4SVBCMgnuqZwdTJv9e3EZd?usp=drive_link" target="_blank" rel="noopener">
+            <div class="num"><span>06</span></div>
+            <div class="link-text"><div class="link-title">目的別AI厳選リスト（画像）</div><div class="link-note">▶ タップして視聴</div></div>
+            <div class="play">▶</div>
+          </a>
+          <div class="ttp">
+            <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
+            <div class="ttp-body">動画が難しい人は画像投稿から。構成は変えず、ランキングの内容などを入れ替えて作ってみる。</div>
+          </div>
+        </div>
+
+        <div class="card reveal" style="animation-delay:.64s">
+          <a class="link-row" href="https://drive.google.com/file/d/16-cvnvFcucp1EASdoklM_6Yj8KwQL3DV/view?usp=sharing" target="_blank" rel="noopener">
+            <div class="num"><span>07</span></div>
+            <div class="link-text"><div class="link-title"><span class="br-word">AI使うならこれ</span> <span class="br-word">2025 vs 2026</span><span class="br-word">（画像）</span></div><div class="link-note">▶ タップして視聴</div></div>
+            <div class="play">▶</div>
+          </a>
+          <div class="ttp">
+            <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
+            <div class="ttp-body">2025 vs 2026のAIツール比較という切り口を真似する。丸パクリにならないよう一部ツールを入れ替える。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider reveal" style="animation-delay:.5s">
+        <div class="line"></div><div class="dot">◆</div><div class="line"></div>
+      </div>
+
+      <div class="section-head reveal" style="animation-delay:.54s">
+        <div class="section-icon">💰</div>
+        <div class="section-meta">
+          <div class="section-eyebrow">SIDE BUSINESS</div>
+          <div class="section-title">AI副業</div>
+          <div class="section-desc">収入の柱を増やす</div>
+        </div>
+        <div class="section-count">3本</div>
+      </div>
+
+      <div class="links">
+        <div class="card reveal" style="animation-delay:.6s">
+          <a class="link-row" href="https://www.instagram.com/reel/DaFMqd4RIWv/" target="_blank" rel="noopener">
+            <div class="num"><span>08</span></div>
+            <div class="link-text"><div class="link-title">ClaudeCode × YouTube</div><div class="link-note">▶ タップして視聴</div></div>
+            <div class="play">▶</div>
+          </a>
+          <div class="ttp">
+            <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
+            <div class="ttp-body">ClaudeCode×〇〇の掛け合わせで半自動化して収益化。AIに詳しくない視聴者の目線を下げて見せるのも重要。</div>
+          </div>
+        </div>
+
+        <div class="card reveal" style="animation-delay:.66s">
+          <a class="link-row" href="https://www.instagram.com/reel/DXbky96kShY/" target="_blank" rel="noopener">
+            <div class="num"><span>09</span></div>
+            <div class="link-text"><div class="link-title">ClaudeCode × note</div><div class="link-note">▶ タップして視聴</div></div>
+            <div class="play">▶</div>
+          </a>
+          <div class="ttp">
+            <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
+            <div class="ttp-body">ClaudeCode×noteの掛け合わせで半自動化して収益化するのが軸。動画の内容は変えず、言い回しで差をつける。</div>
+          </div>
+        </div>
+
+        <div class="card reveal" style="animation-delay:.72s">
+          <a class="link-row" href="https://drive.google.com/drive/folders/1W3r9qwiS0lKpE739QQNBPcFuShwsltja?usp=drive_link" target="_blank" rel="noopener">
+            <div class="num"><span>10</span></div>
+            <div class="link-text"><div class="link-title"><span class="br-word">ChatGPT ×</span> <span class="br-word">Googleマップ</span></div><div class="link-note">▶ タップして視聴</div></div>
+            <div class="play">▶</div>
+          </a>
+          <div class="ttp">
+            <div class="ttp-head"><span class="check">✓</span><span class="tag">TTP</span>するべきポイント</div>
+            <div class="ttp-body">暗い中でのマシンガントーク、速いテンポと雰囲気で引き込む。ChatGPT×Googleマップという誰もが一度は聞いたツールを出す。</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer reveal" style="animation-delay:.84s">
+        <div class="next-action">
+          <div class="na-eyebrow">NEXT ACTION</div>
+          <a class="script-btn" href="https://splashocean920hiro-gif.github.io/insta-script-ai-guide-senior/" target="_blank" rel="noopener">
+            <span class="btn-icon">✍️</span>
+            <span class="btn-text">台本を作成する</span>
+          </a>
+          <div class="na-note">動画を見たら、そのまま台本づくりへ</div>
+        </div>
+        <span class="footer-crown">👑</span>
+        <div class="footer-brand">ぶち上げ東京オフ会</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  // 会場のネオン三角
+  const venue = document.getElementById('venue');
+  const triColors = ['rgba(79,168,255,0.6)','rgba(240,208,128,0.6)','rgba(46,107,214,0.6)'];
+  for(let i=0;i<7;i++){
+    const t=document.createElement('div');
+    t.className='neon-tri';
+    const sz=Math.random()*10+8;
+    const c=triColors[i%3];
+    t.style.borderLeft=sz+'px solid transparent';
+    t.style.borderRight=sz+'px solid transparent';
+    t.style.borderBottom=(sz*1.6)+'px solid '+c;
+    t.style.left=(Math.random()*90+3)+'%';
+    t.style.top=(Math.random()*30+2)+'%';
+    t.style.animationDelay=(Math.random()*3)+'s';
+    venue.appendChild(t);
+  }
+
+  // 弾ける光の粒（ヒーロー）
+  const hs=document.getElementById('heroSparks');
+  if(hs){
+    for(let i=0;i<14;i++){
+      const s=document.createElement('div');
+      s.className='spark';
+      s.textContent='✦';
+      s.style.left=(Math.random()*90+3)+'%';
+      s.style.top=(Math.random()*90+3)+'%';
+      s.style.fontSize=(Math.random()*10+8)+'px';
+      s.style.animationDelay=(Math.random()*2.6)+'s';
+      hs.appendChild(s);
+    }
+  }
+</script>
+</body>
+</html>
